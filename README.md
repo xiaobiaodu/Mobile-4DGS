@@ -1,9 +1,9 @@
-<h2 align="center"> <a href="https://xiaobiaodu.github.io/flux-gs-project/">Mobile-4DGS: Unified Static-Dynamic Real-time Mobile Gaussian Splatting</a></h2>
+<h2 align="center"> <a href="https://xiaobiaodu.github.io/mobile-4dgs-project/">Mobile-4DGS: Unified Static-Dynamic Real-time Mobile Gaussian Splatting</a></h2>
 <h5 align="center"> If you like our project, please give us a star ⭐ on GitHub for latest update.  </h2>
 
 <h5 align="center">
 
-[![project](https://img.shields.io/badge/Webpage-blue)](https://xiaobiaodu.github.io/flux-gs-project/)
+[![project](https://img.shields.io/badge/Webpage-blue)](https://xiaobiaodu.github.io/mobile-4dgs-project/)
 [![arXiv](https://img.shields.io/badge/Arxiv-2603.11531-b31b1b.svg?logo=arXiv)](https://arxiv.org/pdf/2606.30017)
 
 
@@ -96,7 +96,7 @@ Rendering with the json file, otherwise using the ply file. The results are the 
 
 ## Mobile Rendering
 We save the trained Gaussian Splatting file as `.json` for better loading in WebGL with point cloud and MLP decompression. 
-Our WebGL mobile render is open to the public. The code is (here)[https://github.com/xiaobiaodu/flux-gs-project]
+Our WebGL mobile render is open to the public. The code is (here)[https://github.com/xiaobiaodu/mobiel-4dgs-project]
 
 ## 👍 **Acknowledgement**
 This work is built on many amazing research works and open-source projects, thanks a lot to all the authors for sharing!
