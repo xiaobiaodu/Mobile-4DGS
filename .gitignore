@@ -1,0 +1,9 @@
+submodules/*/build/
+output/
+tiny-cuda-nn/
+*/__pycache__/*
+*/*/__pycache__/*
+datasets/
+.vscode
+.agents
+*.pyc
