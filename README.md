@@ -101,7 +101,7 @@ Our WebGL mobile render is open to the public. The code is (here)[https://github
 ## 👍 **Acknowledgement**
 This work is built on many amazing research works and open-source projects, thanks a lot to all the authors for sharing!
 * [Mobile-GS](https://github.com/xiaobiaodu/Mobile-GS)
-* [Mobile-GS](https://github.com/xiaobiaodu/Flux-GS)
+* [Flux-GS](https://github.com/xiaobiaodu/Flux-GS)
 * [MVGS](https://github.com/xiaobiaodu/MVGS)
 * [FastGS](https://github.com/fastgs/FastGS)
 
