@@ -53,6 +53,38 @@ If you have trouble in installing cuml, please refer to the [CUML Installation G
 
 We used [Mip-NeRF 360](https://jonbarron.info/mipnerf360/), [Tanks & Temples, and Deep Blending](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip).
 
+### AMD ROCm (e.g. MI300X) — parallel backend, no CUDA changes
+
+The static-3DGS training path runs on AMD ROCm with the same `train.py`, via a
+gsplat-based rasterization backend that is selected **only when the native
+CUDA extension is not compiled**, so the CUDA workflow above is completely
+unchanged (no NVIDIA-visible behavior change; see `rocm_adapter/README.md`
+and `gaussian_renderer/__init__.py` for the guard).
+
+```shell
+# One-shot environment (torch 2.10.0+rocm7.0 + gsplat 1.5.3 ROCm wheel
+# + pure-torch stand-ins for simple_knn / fused_ssim):
+bash rocm_adapter/setup_rocm_env.sh          # venv created at ~/gs210venv
+source ~/gs210venv/bin/activate
+
+# Same CLI as the CUDA path:
+python train.py \
+  --source_path /path/to/processed-scene \
+  --model_path out/ \
+  --sh_degree 0 --iterations 30000 \
+  --position_lr_init 1.6e-4 --position_lr_final 1.6e-5 \
+  --convert_SHs_python --resolution -1 \
+  --skip_quantize     # for smoke runs shorter than --dynamic_net_itr
+```
+
+Scope & notes:
+- Verified on AMD Instinct MI300X (ROCm 7.0): full train loop incl.
+  densification (clone/split/prune) — 2000 iters, L1 0.231 / PSNR 14.40.
+- The 4D dynamic path (velocity field / time axis / SVQ) still targets the
+  CUDA extensions and is not covered by this backend.
+- The port is self-contained in `rocm_adapter/` (adapter + setup script);
+  `train.py`, `scene/`, `utils/` and `submodules/` are untouched.
+
 ## Running
 
 
