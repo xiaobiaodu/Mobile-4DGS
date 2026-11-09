@@ -96,7 +96,7 @@ Rendering with the json file, otherwise using the ply file. The results are the 
 
 ## Mobile Rendering
 We save the trained Gaussian Splatting file as `.json` for better loading in WebGL with point cloud and MLP decompression. 
-Our WebGL mobile render is open to the public. The code is (here)[https://github.com/xiaobiaodu/mobiel-4dgs-project]
+Our WebGL mobile render is open to the public. The code is (here)[[https://github.com/xiaobiaodu/mobiel-4dgs-project](https://github.com/xiaobiaodu/mobile-4dgs-project)]
 
 ## 👍 **Acknowledgement**
 This work is built on many amazing research works and open-source projects, thanks a lot to all the authors for sharing!
