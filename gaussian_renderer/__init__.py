@@ -13,7 +13,22 @@ import torch
 import math
 from scene.gaussian_model import GaussianModel
 from utils.sh_utils import eval_sh
-from diff_gaussian_rasterization_fluxgs import GaussianRasterizationSettings, GaussianRasterizer
+try:
+    # Primary path: the native CUDA extension (built per README on an
+    # NVIDIA/ROCm machine with a matching torch). Untouched.
+    from diff_gaussian_rasterization_fluxgs import GaussianRasterizationSettings, GaussianRasterizer
+except ImportError:
+    # Fallback: pure-gsplat backend for ROCm (MI300X) and any other machine
+    # where the CUDA extension is not compiled. Same Settings/Rasterizer
+    # contract, ~250 lines of Python (rocm_adapter/). See
+    # rocm_adapter/README.md for details.
+    import os
+    import sys
+    _rocm = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "rocm_adapter")
+    if _rocm not in sys.path:
+        sys.path.append(_rocm)
+    from fluxgs_to_gsplat import GaussianRasterizationSettings, GaussianRasterizer
+
 
 
 GAUSSIAN_SUBSETS = ("all", "static", "dynamic")
